@@ -1,0 +1,5 @@
+*.pdf
+*.TXT
+*.exe
+.vscode
+obj/
