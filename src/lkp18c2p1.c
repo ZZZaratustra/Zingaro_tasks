@@ -22,9 +22,9 @@ int shortest_index(int lines[], int n)
 
 /**
  * @brief решает задачу с очередями в магазине
- * @param исходные данные
- * @param количество очередей
- * @param количество людей
+ * @param lines исходные данные
+ * @param n количество очередей
+ * @param m количество людей
  */
 void solve(int lines[], int n, int m)
 {

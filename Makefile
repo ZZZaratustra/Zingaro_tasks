@@ -8,43 +8,42 @@ OBJDIR = obj
 TSTSRCDIR = tst/src
 TSTINCDIR = tst/inc
 
-SOURCES = $(SRCDIR)/main.c $(SRCDIR)/lkp18c2p1.c $(SRCDIR)/unity.c $(TSTSRCDIR)/test_lkp18c2p1.c
-OBJECTS = $(OBJDIR)/main.o $(OBJDIR)/lkp18c2p1.o $(OBJDIR)/unity.o $(OBJDIR)/test_lkp18c2p1.o
+SRC_C_FILES := $(wildcard $(SRCDIR)/*.c)
+TEST_C_FILES := $(wildcard $(TSTSRCDIR)/*.c)
+ALL_C_FILES := $(SRC_C_FILES) $(TEST_C_FILES)
+
+SRC_OBJ_FILES := $(SRC_C_FILES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+TEST_OBJ_FILES := $(TEST_C_FILES:$(TSTSRCDIR)/%.c=$(OBJDIR)/%.o)
+ALL_OBJ_FILES := $(SRC_OBJ_FILES) $(TEST_OBJ_FILES)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@
+$(TARGET): $(ALL_OBJ_FILES)
+	$(CC) $(ALL_OBJ_FILES) -o $@
 
-$(OBJDIR)/main.o: $(SRCDIR)/main.c
-	@if not exist "$(OBJDIR)" mkdir "$(OBJDIR)"
+# 	@mkdir -p $(OBJDIR)
+
+MKDIR = mkdir -p $(OBJDIR) 2>/dev/null || mkdir $(OBJDIR) 2>nul || exit 0
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	$(MKDIR)	
 	$(CC) $(CFLAGS) -I$(INCDIR) -I$(TSTINCDIR) -c $< -o $@
 
-$(OBJDIR)/lkp18c2p1.o: $(SRCDIR)/lkp18c2p1.c
-	@if not exist "$(OBJDIR)" mkdir "$(OBJDIR)"
-	$(CC) $(CFLAGS) -I$(INCDIR) -I$(TSTINCDIR) -c $< -o $@
-
-$(OBJDIR)/unity.o: $(SRCDIR)/unity.c
-	@if not exist "$(OBJDIR)" mkdir "$(OBJDIR)"
-	$(CC) $(CFLAGS) -I$(INCDIR) -I$(TSTINCDIR) -c $< -o $@
-
-$(OBJDIR)/test_lkp18c2p1.o: $(TSTSRCDIR)/test_lkp18c2p1.c
-	@if not exist "$(OBJDIR)" mkdir "$(OBJDIR)"
+$(OBJDIR)/%.o: $(TSTSRCDIR)/%.c
+	$(MKDIR)	
 	$(CC) $(CFLAGS) -I$(INCDIR) -I$(TSTINCDIR) -c $< -o $@
 
 clean:
-	del /Q $(OBJDIR)\*.o $(TARGET)
+	rm -f $(OBJDIR)/*.o $(TARGET)
 
-.PHONY: all clean run test test-cat test-all
+.PHONY: all clean run test test-read test-all
 
 run: $(TARGET)
-	$(TARGET)
+	./$(TARGET)
 
 test: $(TARGET)
-	$(TARGET) --test 1> RESULT.TXT
+	./$(TARGET) --test 1> RESULT.TXT
 
 test-read: test
-	chcp 65001 && type RESULT.TXT
+	cat RESULT.TXT
 
 test-all: test test-read
-
