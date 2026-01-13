@@ -67,6 +67,17 @@ int solve_snowflakes(int snowflakes[][6], int n) {
   return 0;
 }
 
+int code(int snowflakes[]) {
+#define S(N) snowflakes[N]
+#define MAX 100000
+  return (S(0) + S(1) + S(2) + S(3) + S(4) + S(5)) % MAX;
+};
+
+/* typedef struct snowflake_node { */
+/*   int snowflakes[6]; */
+/*   struct snowflake_node *next; */
+/* } snowflake_node; */
+
 int test_main() {
   int snowflakes[2][6] = {{0, 1, 2, 3, 4, 5}, {4, 5, 0, 1, 2, 3}};
   int _snowflakes[2][6] = {{4, 5, 0, 1, 2, 3}, {5, 4, 3, 2, 1, 0}};
