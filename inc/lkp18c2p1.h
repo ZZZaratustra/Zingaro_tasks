@@ -4,8 +4,7 @@
 #define MAX_COUNT 100
 // static int arr[100] = { 0 ,0 ,0 };
 
-int shortest_index(int[], int);
-void solve(int[], int, int);
+// int shortest_index(int[], int);
+void solve_lines(int[], int, int);
 
-
-#endif//lkp18c2p1
+#endif // lkp18c2p1

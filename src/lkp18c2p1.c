@@ -8,16 +8,15 @@
  * @brief находит самую короткую очередь
  * retval индекс очереди с наименьшим количеством людей
  */
-int shortest_index(int lines[], int n)
-{
-    int shortest = 0;
-    int i;
+int shortest_index(int lines[], int n) {
+  int shortest = 0;
+  int i;
 
-    for (i = 0; i < n; i++) {
-        if(lines[i] < lines[shortest])
-            shortest = i;
-    }
-    return shortest;
+  for (i = 0; i < n; i++) {
+    if (lines[i] < lines[shortest])
+      shortest = i;
+  }
+  return shortest;
 }
 
 /**
@@ -26,15 +25,13 @@ int shortest_index(int lines[], int n)
  * @param n количество очередей
  * @param m количество людей
  */
-void solve(int lines[], int n, int m)
-{
-    int i, shortest;
-    for (i = 0; i < m; i++) {
-        shortest = shortest_index(lines, n);
-        lines[shortest]+=1;
-        LOG(%d, ++shortest);
-    }
-    // lines[shortest]-=1;
-    LOG(Ответ [%d %d %d ...] %d, lines[0], lines[1],lines[2],shortest+1);
+void solve_lines(int lines[], int n, int m) {
+  int i, shortest;
+  for (i = 0; i < m; i++) {
+    shortest = shortest_index(lines, n);
+    lines[shortest] += 1;
+    LOG(% d, ++shortest);
+  }
+  // lines[shortest]-=1;
+  LOG(Ответ[% d % d % d...] % d, lines[0], lines[1], lines[2], shortest + 1);
 }
-

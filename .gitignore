@@ -2,4 +2,6 @@
 *.TXT
 *.exe
 .vscode
+.cache
 obj/
+tags

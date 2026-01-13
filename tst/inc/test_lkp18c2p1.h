@@ -3,6 +3,6 @@
 #include "lkp18c2p1.h"
 #include "unity.h"
 
-void test_solve_all(void);
+void test_solve_lines(void);
 
-#endif//TEST
+#endif // TEST
