@@ -1,0 +1,9 @@
+CompileFlags:
+  Add:
+    - -I./src
+    - -I./inc
+    - -I./tst/inc
+    - -I./tst/src
+    - -std=c99
+    - -Wall
+    - -Wextra

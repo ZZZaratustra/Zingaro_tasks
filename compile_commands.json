@@ -1,0 +1,32 @@
+[
+  {
+    "directory": "D:/algC/Zingaro_tasks",
+    "command": "clang -Wall -Wextra -std=c99 -Iinc -Itst/inc -c src/main.c -o obj/main.o",
+    "file": "src/main.c"
+  },
+  {
+    "directory": "D:/algC/Zingaro_tasks",
+    "command": "clang -Wall -Wextra -std=c99 -Iinc -Itst/inc -c src/type.c -o obj/type.o",
+    "file": "src/type.c"
+  },
+  {
+    "directory": "D:/algC/Zingaro_tasks",
+    "command": "clang -Wall -Wextra -std=c99 -Iinc -Itst/inc -c src/lkp18c2p1.c -o obj/lkp18c2p1.o",
+    "file": "src/lkp18c2p1.c"
+  },
+  {
+    "directory": "D:/algC/Zingaro_tasks",
+    "command": "clang -Wall -Wextra -std=c99 -Iinc -Itst/inc -c src/cco07p2.c -o obj/cco07p2.o",
+    "file": "src/cco07p2.c"
+  },
+  {
+    "directory": "D:/algC/Zingaro_tasks",
+    "command": "clang -Wall -Wextra -std=c99 -Iinc -Itst/inc -c tst/src/test_lkp18c2p1.c -o obj/test_lkp18c2p1.o",
+    "file": "tst/src/test_lkp18c2p1.c"
+  },
+  {
+    "directory": "D:/algC/Zingaro_tasks",
+    "command": "clang -Wall -Wextra -std=c99 -Iinc -Itst/inc -c tst/src/test_cco07p2.c -o obj/test_cco07p2.o",
+    "file": "tst/src/test_cco07p2.c"
+  }
+]
